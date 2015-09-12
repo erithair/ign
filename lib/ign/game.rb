@@ -1,7 +1,7 @@
 module IGN
   module Game
     class << self
-      def search(name)
+      def search(name, options = {})
         options = Hash(
           'q' => name,
           'type' => 'object',
@@ -10,7 +10,7 @@ module IGN
           'page' => 0, # 0, 1, 2, ...
           'count' => 10
         )
-        response = IGN::Search.new('/search', options).response
+        response = ::IGN::Search.new('/search', options).response
         parse response
       end
 
@@ -18,7 +18,7 @@ module IGN
 
       def parse(content)
         # TODO parse html
-        content
+        ::IGN::Parser::Search.parse(content)
       end
     end
   end
