@@ -1,3 +1,5 @@
 module IGN
-  DOMAIN = 'wwww.ign.com'
+  module CONSTANT
+    DOMAIN = 'www.ign.com'
+  end
 end
