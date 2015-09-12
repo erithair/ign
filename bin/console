@@ -10,5 +10,7 @@ require "ign"
 # require "pry"
 # Pry.start
 
+require 'dev/useful'
+require 'byebug'
 require "irb"
 IRB.start
