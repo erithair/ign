@@ -2,14 +2,16 @@ module IGN
   module Game
     class << self
       def search(name, options = {})
-        options = Hash(
-          'q' => name,
-          'type' => 'object',
-          'objectType' => 'game',
-          'filter' => 'game',
-          'page' => 0, # 0, 1, 2, ...
-          'count' => 10
-        )
+        options = HashWithIndifferentAccess.new(
+          {
+            'type' => 'object',
+            'objectType' => 'game',
+            'filter' => 'game',
+            'page' => 0, # 0, 1, 2, ...
+            'count' => 10
+          }.merge!(options)
+        ).merge!(q: name)
+
         response = ::IGN::Search.new('/search', options).response
         parse response
       end
