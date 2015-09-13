@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["erithair"]
   spec.email         = ["erithair@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Scraper to fetch game info from IGN}
   spec.homepage      = "https://github.com/erithair/ign"
   spec.license       = "MIT"
 
