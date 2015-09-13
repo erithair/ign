@@ -27,7 +27,7 @@ module IGN
         def parse_game_item(item)
           game = ::IGN::Parser::Search::Game.new(item)
 
-          ::IGN::Model::Game.new(
+          ::IGN::Resource::Game.new(
             name: game.name,
             id: game.id,
             handle: game.handle,

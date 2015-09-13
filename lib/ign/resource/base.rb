@@ -1,5 +1,5 @@
 module IGN
-  module Model
+  module Resource
     class Base
       def initialize(info = {})
         info.each do |attr, value|

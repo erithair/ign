@@ -7,14 +7,13 @@ require 'active_support/core_ext/hash'
 
 require 'ign/error'
 require 'ign/constants'
-require 'ign/model/base'
-require 'ign/model/game'
-require 'ign/model/search_result/game'
+require 'ign/resource/base'
+require 'ign/resource/game'
 require 'ign/request'
 require 'ign/search'
+require 'ign/game'
 require 'ign/parser/search'
 require 'ign/parser/search/game'
-require 'ign/game'
 
 module IGN
   # Your code goes here...
