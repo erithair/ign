@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/erithair/ign.svg)](https://travis-ci.org/erithair/ign)
+
 # IGN
 
 Scrape game info from [IGN](http://www.ign.com).
