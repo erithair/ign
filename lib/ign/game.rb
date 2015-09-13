@@ -19,7 +19,6 @@ module IGN
       private
 
       def parse(content)
-        # TODO parse html
         ::IGN::Parser::Search.parse(content)
       end
     end
