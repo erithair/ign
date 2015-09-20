@@ -3,30 +3,37 @@ module IGN
     module Search
       class << self
         def parse(content)
-          doc = ::Nokogiri.HTML(content)
-          items = doc.css('#search-list .search-item')
+          items = get_search_results(content)
 
           items.map do |item|
-            parse_search_item(item)
+            parse_search_result(item)
           end
         end
 
         private
 
-        def parse_search_item(item)
+        def get_search_results(content)
+          doc = ::Nokogiri.HTML(content)
+          doc.css('#search-list .search-item')
+        end
+
+        def parse_search_result(item)
           type = item.attribute('data-type').value
 
           case type
           when 'game'
-            parse_game_item(item)
+            game = parse_game_item(item)
+            generate_game_resource(game)
           else
             raise "Unknow search item type: #{type}!"
           end
         end
 
         def parse_game_item(item)
-          game = ::IGN::Parser::Search::Game.new(item)
+          ::IGN::Parser::Search::Game.new(item)
+        end
 
+        def generate_game_resource(game)
           ::IGN::Resource::Game.new(
             name: game.name,
             id: game.id,
