@@ -1,11 +1,23 @@
 module IGN
   module Resource
     class Base
-      def initialize(info = {})
-        info.each do |attr, value|
-          setter = "#{attr}="
-          send(setter, value) if respond_to? setter
+      class << self
+        attr_reader :attributes
+
+        def has_attribute(*attrs)
+          @attributes = [*attrs]
+          attr_reader(*attrs)
         end
+      end
+
+      def initialize(info = {})
+        info.slice(*attributes).each do |attr, value|
+          instance_variable_set "@#{attr}", value
+        end
+      end
+
+      def attributes
+        self.class.attributes
       end
     end
   end
